@@ -25,7 +25,7 @@ async function solution() {
       VALUES ('AAAAAAAAAAAAAAAAAAAA', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
     `;
 
-    console.log("Успех.");
+    console.log("Успешный успех.");
   } catch (err) {
     console.error("Ошибка:", err);
   } finally {

@@ -10,17 +10,28 @@ const config = {
 // BEGIN (write your solution here)
 const sql = postgres(config);
 
-export default async function solution() {
-  await sql`
-        CREATE TABLE IF NOT EXISTS articles (
-            title VARCHAR(255),
-            description VARCHAR(255)
-        );
+async function solution() {
+  try {
+    await sql`
+      CREATE TABLE IF NOT EXISTS articles (
+        id SERIAL PRIMARY KEY,
+        title VARCHAR(255),
+        description VARCHAR(255)
+      );
     `;
 
-  await sql`
-        INSERT INTO articles (title, description)
-        VALUES ('AAAAAAAAAAAAAAAAAAAAA', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+    await sql`
+      INSERT INTO articles (title, description)
+      VALUES ('AAAAAAAAAAAAAAAAAAAA', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
     `;
+
+    console.log("Успех.");
+  } catch (err) {
+    console.error("Ошибка:", err);
+  } finally {
+    await sql.end();
+  }
 }
+
+export default solution;
 // END
